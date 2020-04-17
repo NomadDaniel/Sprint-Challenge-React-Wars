@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 import CharacterList from "./components/CharacterList"
 
 const App = () => {
@@ -8,10 +8,10 @@ const App = () => {
       <h1 className="Header">Star Wars API: Characters</h1>
       <CharacterList />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.

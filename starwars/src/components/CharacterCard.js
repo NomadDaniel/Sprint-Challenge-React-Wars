@@ -2,25 +2,26 @@ import React from "react"
 import styled from "styled-components"
 
 const Card = styled.div`
-    display: flex;
-    width: 40%;
+    width: 35%;
+    margin: 5%;
     background: white;
     border-radius: 5%;
-    margin: 3%;
+    // margin: 3%;
     padding: 1%;
+    opacity: 80%;
 `
 
 const CardTitle = styled.h3`
-    // margin-top: 0.2rem;
-    // padding: 0.6rem 0;
-    font-size: 1.8rem;
-    color: #722120;
+    // margin-top: 0.1rem;
+    // padding: 1.3rem 0;
+    font-size: 1.7rem;
+    color: darkblue;
 `
 
 const CardP = styled.p`
-    // horizontal-align: text-bottom;
-    color: #121b26;
-    font-size: 1.2rem;
+    color: darkgreen;
+    font-size: 1rem;
+    
     text-align: center;
 `
 
