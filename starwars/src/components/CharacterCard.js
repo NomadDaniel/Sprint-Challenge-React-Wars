@@ -8,7 +8,7 @@ const Card = styled.div`
     border-radius: 5%;
     // margin: 3%;
     padding: 1%;
-    opacity: 80%;
+    opacity: 70%;
 `
 
 const CardTitle = styled.h3`
