@@ -2,15 +2,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-size: inherit;
+  background-size: contain;
   background-image: url('./images/rm-bg.jpg');
-/*   
-  background-image: url('./images/darth.jpg');
-  background-image: url('./images/atat.jpg');
-  background-image: url('./images/darthsaber.png');
-  background-image: url('./images/starwars.jpg');
-  background-image: url('./images/ren.jpg');
-  background-image: url('./images/allchar.jpg');
-  background-image: url('./images/allchar2.jpg');  
-  background-image: url('./images/3split.jpg'); */
+  background-image: url('./images/rick\ and\ morty\ jail.png');
+  background-image: url('./images/RickandMortyF_U.png');
+  background-image: url('./images/RickandMorty.png');
+  background-image: url('./images/RickandMortyPeace.jpg');
+
 }

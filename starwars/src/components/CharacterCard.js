@@ -3,46 +3,45 @@ import styled from "styled-components"
 
 
 const Card = styled.div`
-    width: 25%;
-    margin: 1%;
-    background: white;
-    border-radius: 15%;
-    // margin: 3%;
-    // padding: 1%;
-    // opacity: 90%;
+  // border: 1px solid black;
+  width: 16%;
+  margin: 2%;
+  background: lightgrey;
+  border-radius: 5%;
+  opacity: 85%;
 `
-
+const Image = styled.img`
+  max-width: 100%;
+  border-radius: 5% 5% 0% 0%;
+  // border: 1px solid black;
+`
 const CardTitle = styled.h1`
-    // margin-top: 0.1rem;
-    // padding: 1.3rem 0;
-    font-size: 1.7rem;
-    color: darkblue;
+  max-width: 100%;
+  max-height: 100%;
+  background: white;
+  font-size: 1.3rem;
+  padding: 1%;
+  // border: 1px solid black;
 `
 
 const CardP = styled.p`
-    color: darkgreen;
-    font-size: 1rem;
-    text-align: center;
+  color: black;
+  font-size: .8rem;
+  text-align: center;
+  font-weight: bold;
 `
 
 const CharacterCard = props => {
-  const {name, status, species, gender, origin, location, image} = props.item
+  const { name, status, species, gender, origin, location, image } = props.item
   return (
     <Card>
-      {/* <img src={props.image} alt={props.name}/>
-      <CardTitle>{props.name}</CardTitle>
-      <CardP>Status: {props.status}</CardP>
-      <CardP>Species: {props.species}</CardP>
-      <CardP>Gender: {props.gender}</CardP>
-      <CardP>Origin: {props.origin}</CardP>
-      <CardP>Location: {props.location}</CardP> */}
-      <img src={image} alt={name}/>
-      <CardTitle>{name}</CardTitle>
-      <CardP>Status: {status}</CardP>
-      <CardP>Species: {species}</CardP>
-      <CardP>Gender: {gender}</CardP>
-      <CardP>Origin: {origin.name}</CardP>
-      <CardP>Location: {location.name}</CardP>
+      <Image src = { image } alt = { name }/>
+      <CardTitle>{ name }</CardTitle>
+      <CardP>Status: { status }</CardP>
+      <CardP>Species: { species }</CardP>
+      <CardP>Gender: { gender }</CardP>
+      <CardP>Origin: { origin.name }</CardP>
+      <CardP>Location: { location.name }</CardP>
     </Card>
   )
 }

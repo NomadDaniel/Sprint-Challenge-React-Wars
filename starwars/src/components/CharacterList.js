@@ -1,35 +1,34 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 import styled from "styled-components"
 import CharacterCard from "./CharacterCard"
 
 
 const ListContainer = styled.div`
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    // flex-direction: coloumn;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  // flex-direction: coloumn;
 `
 const ButtonDiv = styled.div`
-disply:flex;
-justify-content: space-between;
-width: 100%;
-height: 100%;
-flex-flow: row wrap;
+  disply:flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  flex-flow: row wrap;
 `
 const Button = styled.button`
-    height: 15%;
-    width: 15%;
-    margin: 1%;
-    background: yellow;
-    border-radius: 1%;
-    padding: 1%;
-    color: blue;
-    font-weight: bold;
-    font-size: 1.2rem;
-
+  background: cyan;
+  color: black;    
+  // height: 100%;
+  width: 7%;
+  margin: 1%;
+  border-radius: 5%;
+  padding: .4%;
+  font-weight: bold;
+  font-size: 1.2rem;
   `
 
 function CharacterList() {
@@ -38,7 +37,7 @@ function CharacterList() {
 
     useEffect(() => {
         axios
-            .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
+            .get(`https://rickandmortyapi.com/api/character/?page=${ page }`)
             .then(res=>{
                 console.log(res);
                 setPeople(res.data.results);
@@ -46,37 +45,34 @@ function CharacterList() {
             })
     }, [page])
 
-    const handlePrevious = e =>{
+    const handlePrevious = e => {
       setPage(page-1)
     }
 
-    const handleNext = e =>{
+    const handleNext = e => {
       setPage(page+1)
     }
 
     return (
       <ListContainer>
+        
         <ButtonDiv> 
-        <Button onClick={handlePrevious}>Prev</Button> 
-        <Button onClick={handleNext}>Next</Button>
+    { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
+    { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
         </ButtonDiv>
         {people.map(item => {
           return (
               <CharacterCard 
-              key={ item.id } 
-              // name={ item.name } 
-              // status={ item.status }
-              // species={ item.species }
-              // gender={ item.gender }
-              // origin={ item.origin.name } 
-              // location={ item.location.name }
-              // image = {item.image}
-              item ={item}
+              key = { item.id } 
+              item = { item }
               />
             )
           })
         }
-        
+        <ButtonDiv> 
+    { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
+    { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
+        </ButtonDiv>
       </ListContainer>
     )
 }

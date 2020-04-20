@@ -5,7 +5,7 @@ import CharacterList from "./components/CharacterList"
 const App = () => {
    return (
     <div className="App">
-      <h1 className="Header">Rick and Morty API: Characters</h1>
+      <h1 className="Header">Rick and Morty API</h1>
       <CharacterList />
     </div>
   )
