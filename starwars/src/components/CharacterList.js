@@ -32,43 +32,44 @@ const Button = styled.button`
   `
 
 function CharacterList() {
-    const [people, setPeople] = useState([])
-    const [page, setPage] = useState(1)
+    const [ people, setPeople ] = useState ( [] )
+    const [ page, setPage ] = useState ( 1 )
 
-    useEffect(() => {
-        axios
-            .get(`https://rickandmortyapi.com/api/character/?page=${ page }`)
-            .then(res=>{
-                console.log(res);
-                setPeople(res.data.results);
-                // console.log(page)
-            })
-    }, [page])
+    useEffect ( () => {
+      axios
+        .get ( `https://rickandmortyapi.com/api/character/?page=${ page }` )
+        .then( res => {
+            console.log ( res )
+            setPeople ( res.data.results )
+            // console.log(page)
+          })
+    }, [ page ] )
 
     const handlePrevious = e => {
-      setPage(page-1)
+      setPage (page - 1)
     }
 
     const handleNext = e => {
-      setPage(page+1)
+      setPage (page + 1)
     }
 
     return (
       <ListContainer>
         
-        <ButtonDiv> 
-    { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
-    { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
-        </ButtonDiv>
-        {people.map(item => {
-          return (
-              <CharacterCard 
-              key = { item.id } 
-              item = { item }
-              />
-            )
-          })
-        }
+      <ButtonDiv> 
+        { page === 1 ? null : <Button onClick = { handlePrevious }> Prev </Button> } 
+        { page === 25 ? null : <Button onClick = { handleNext }> Next </Button> }
+      </ButtonDiv>
+      
+      {people.map(item => {
+        return (
+          <CharacterCard 
+          key = { item.id } 
+          item = { item }
+          />
+        )
+      })
+    }
         <ButtonDiv> 
     { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
     { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
