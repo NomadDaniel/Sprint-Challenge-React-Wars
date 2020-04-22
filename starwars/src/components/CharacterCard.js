@@ -23,8 +23,9 @@ const CardTitle = styled.h1`
   font-size: 1.3rem;
   padding: 1%;
   border: 1px 0px 1px 0;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
 `
-
 const CardP = styled.p`
   color: black;
   font-size: .8rem;
@@ -43,7 +44,7 @@ const CharacterCard = props => {
       <CardP>Gender: { gender }</CardP>
       <CardP>Origin: { origin.name }</CardP>
       <CardP>Location: { location.name }</CardP>
-      <CardP>Episode: { episode.map ( url => `${ url.slice ( 40 ) } ` ) }</CardP>
+      <CardP>Episode: { episode.map ( url => `${ url.slice ( 40 ) }  ` ) }</CardP>
     </Card>
   )
 }

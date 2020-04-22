@@ -1,11 +1,22 @@
 import React from 'react'
 import './App.css'
+import styled from "styled-components"
 import CharacterList from "./components/CharacterList"
+
+const MainH1 = styled.h1`
+  color: purple;
+  font-size: 4rem;
+  disply: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  flex-flow: row wrap;
+  `
 
 const App = () => {
    return (
     <div className="App">
-      <h1 className="Header">Rick and Morty API</h1>
+      <MainH1 className="Header">Rick and Morty API</MainH1>
       <CharacterList />
     </div>
   )

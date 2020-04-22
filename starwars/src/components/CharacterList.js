@@ -3,26 +3,26 @@ import axios from "axios"
 import styled from "styled-components"
 import CharacterCard from "./CharacterCard"
 
-
 const ListContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-  // flex-direction: coloumn;
 `
-const ButtonDiv = styled.div`
-  disply:flex;
-  justify-content: space-between;
+const SearchForm = styled.form`
   width: 100%;
   height: 100%;
-  flex-flow: row wrap;
+  text-align: center;
+`
+const ButtonDiv = styled.div`
+  width: 100%;
+  height: 100%;
 `
 const Button = styled.button`
   background: cyan;
+  border: 5px solid black;
   color: black;    
-  // height: 100%;
   width: 7%;
   margin: 1%;
   border-radius: 5%;
@@ -34,16 +34,20 @@ const Button = styled.button`
 function CharacterList() {
     const [ people, setPeople ] = useState ( [] )
     const [ page, setPage ] = useState ( 1 )
+    const [ query, setQuery ] = useState("")
 
     useEffect ( () => {
       axios
         .get ( `https://rickandmortyapi.com/api/character/?page=${ page }` )
         .then( res => {
             console.log ( res )
-            setPeople ( res.data.results )
+            const characters = res.data.results.filter(character =>
+              character.name.toLowerCase().includes(query.toLowerCase())
+            );
+            setPeople ( characters )
             // console.log(page)
           })
-    }, [ page ] )
+    }, [ page, query ] )
 
     const handlePrevious = e => {
       setPage (page - 1)
@@ -53,9 +57,24 @@ function CharacterList() {
       setPage (page + 1)
     }
 
+    const handleInputChange = event => {
+      setQuery(event.target.value);
+    };
+
     return (
       <ListContainer>
         
+      <SearchForm className="search">
+        <input
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          name="name"
+          tabIndex="0"
+          placeholder="search by name"
+          autoComplete="off"
+        />
+      </SearchForm>
       <ButtonDiv> 
         { page === 1 ? null : <Button onClick = { handlePrevious }> Prev </Button> } 
         { page === 25 ? null : <Button onClick = { handleNext }> Next </Button> }
@@ -70,9 +89,9 @@ function CharacterList() {
         )
       })
     }
-        <ButtonDiv> 
-    { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
-    { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
+       <ButtonDiv> 
+          { page === 1 ? null : <Button onClick = { handlePrevious }>Prev</Button> } 
+          { page === 25 ? null : <Button onClick = { handleNext }>Next</Button> }
         </ButtonDiv>
       </ListContainer>
     )
